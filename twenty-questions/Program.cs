@@ -9,5 +9,8 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.NameConcatenation();
 
 //2. 
-oneToTen.Lottery();
+// oneToTen.Lottery();
+
+//3.
+oneToTen.WordInReverse();
 

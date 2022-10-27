@@ -10,8 +10,13 @@ namespace twenty_questions
         {
         }
 
+        /*
+         Displays a user's basic information
+         */
         public void NameConcatenation()
         {
+            Console.WriteLine("Question 1: Name Concatenation");
+
             Console.WriteLine("Please enter your First Name: ");
             string firstName = Console.ReadLine();
 
@@ -80,6 +85,8 @@ namespace twenty_questions
          */
         public void Lottery()
         {
+            Console.WriteLine("Question 2: Lottery");
+
             string success = "Congratulations, you have beaten the game!";
             string failure = "Sorry, You have not won this time.";
 
@@ -124,6 +131,30 @@ namespace twenty_questions
                 }
             }
             Console.WriteLine("Thanks for playing. See you around!");
+        }
+
+        /*
+         Displays a user's input in reversed order (Each word is reversed)
+        */
+        public void WordInReverse(){
+            Console.WriteLine("Question 3: Word in Reverse");
+
+            Console.WriteLine("Please enter the input you want reversed");
+
+            string userInput = Console.ReadLine();
+
+            string[] splitString = userInput.Split(' ');
+
+            string result = "";
+
+            foreach(string s in splitString) {
+                char[] sChar = s.ToCharArray();
+                Array.Reverse(sChar);
+                result += new String(sChar) + " ";
+            }
+
+            Console.WriteLine($"Your reversed input is: {result.Trim()}");
+            Console.Read();
         }
     }
 }
