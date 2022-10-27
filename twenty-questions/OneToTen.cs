@@ -73,6 +73,58 @@ namespace twenty_questions
             Console.WriteLine($"Welcome, {firstName}, {genderNoun} of {lastName}, born in {birthYear}");
             Console.Read();
         }
+
+
+        /*
+         Displays Congratulations! only if all the generated numbers are odd
+         */
+        public void Lottery()
+        {
+            string success = "Congratulations, you have beaten the game!";
+            string failure = "Sorry, You have not won this time.";
+
+            Boolean inPlay = true;
+            Random rnd = new Random();
+
+            string result;
+            Boolean won;
+
+            while (inPlay)
+            {
+                result = "";
+                won = true;
+                Console.WriteLine("Please press any key to play this game");
+                Console.ReadLine();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    int num = rnd.Next(10);
+                    if (num % 2 == 0) won = false;
+                    result += Convert.ToString(num) + " ";
+                }
+
+                Console.WriteLine($"Your number is {result.Trim()}");
+
+                Console.WriteLine((won ? success : failure) + "\nPlay Again? (y/n)");
+
+                string userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "y":
+                        inPlay = true;
+                        break;
+                    case "n":
+                        inPlay = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input. Exiting game...");
+                        inPlay = false;
+                        break;
+                }
+            }
+            Console.WriteLine("Thanks for playing. See you around!");
+        }
     }
 }
 
