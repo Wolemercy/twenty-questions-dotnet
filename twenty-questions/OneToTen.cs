@@ -148,7 +148,7 @@ namespace twenty_questions
 
             string result = "";
 
-            foreach(string s in splitString) {
+            foreach (string s in splitString) {
                 char[] sChar = s.ToCharArray();
                 Array.Reverse(sChar);
                 result += new String(sChar) + " ";
@@ -163,6 +163,8 @@ namespace twenty_questions
         */
         public void TypeInReverse()
         {
+            Console.WriteLine("Question 4: Type in Reverse");
+
             Random rd = new Random();
             const string chars = "abcdefghijklmnopqrstuvwzyz";
             int wordLength = rd.Next(1, 6);
@@ -174,7 +176,7 @@ namespace twenty_questions
             }
 
             string reversedWord = "";
-            for (int i = wordLength - 1 ; i >= 0; i--)
+            for (int i = wordLength - 1; i >= 0; i--)
             {
                 reversedWord += originalWord[i];
             }
@@ -184,7 +186,69 @@ namespace twenty_questions
 
             if (userInput == reversedWord) Console.WriteLine("Spot on!");
             else Console.WriteLine("You got it wrong");
+        }
 
+        public void TemperatureUnitConversion()
+        {
+            Console.WriteLine("Question 5: Temperature Unit Conversion\n");
+
+            string _capitalizeFirstLetter(string word) => char.ToUpper(word[0]) + word.Substring(1).ToLower();
+
+            double fahToCel(double fah) => (fah - 32.0) * 5.0 / 9.0;
+            double celToFah(double cel) => (cel * 9.0 / 5.0) + 32.0;
+
+
+            Console.WriteLine("Please enter an option:\n1. Celsius to Fahrenheit\n2. Fahrenheit to Celsius");
+
+
+            Boolean processing = true;
+            int option = 0;
+
+            while (processing)
+            {
+                try
+                {
+                    option = Convert.ToInt32(Console.ReadLine());
+                    if (option > 2 || option < 1) throw new NotSupportedException();
+                    processing = false;
+                    break;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("You have entered an invalid value. Please enter either 1 or 2");
+                }
+
+                catch(NotSupportedException ex)
+                {
+                    Console.WriteLine("You have entered an invalid option. Please enter either 1 or 2");
+                }
+
+            }
+
+            Console.WriteLine("Enter a {0} value: ", option == 1 ? "Celsius" : "Fahrenheit");
+
+            try
+            {
+                switch (option)
+                {
+                    case 1:
+                        double celsiusValue = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine($"Converting {celsiusValue} Celsius to Fahrenheit\nProcessing...\nProcessing Complete!\nResult: {celToFah(celsiusValue)} Fahrenheit");
+                        break;
+                    case 2:
+                        double fahrenheitValue = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine($"Converting {fahrenheitValue} Fahrenheit to Celsius \nProcessing...\nProcessing Complete!\nResult: {fahToCel(fahrenheitValue)} Celsius");
+                        break;
+                }
+            }
+            catch (FormatException ex)
+            {
+                {
+                    Console.WriteLine("You have entered an invalid value");
+                }
+            }
+
+            Console.WriteLine("Thank you for using this Temperature Unit Converter");
         }
     }
 }
