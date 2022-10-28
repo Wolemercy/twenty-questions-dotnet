@@ -12,5 +12,7 @@ OneToTen oneToTen = new OneToTen();
 // oneToTen.Lottery();
 
 //3.
-oneToTen.WordInReverse();
+//oneToTen.WordInReverse();
 
+//4.
+oneToTen.TypeInReverse();

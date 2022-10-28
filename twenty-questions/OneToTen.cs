@@ -136,7 +136,8 @@ namespace twenty_questions
         /*
          Displays a user's input in reversed order (Each word is reversed)
         */
-        public void WordInReverse(){
+        public void WordInReverse()
+        {
             Console.WriteLine("Question 3: Word in Reverse");
 
             Console.WriteLine("Please enter the input you want reversed");
@@ -155,6 +156,35 @@ namespace twenty_questions
 
             Console.WriteLine($"Your reversed input is: {result.Trim()}");
             Console.Read();
+        }
+
+        /*
+         Requests user to type the reverse of a random word. Return Pass or Fail depending on outcome
+        */
+        public void TypeInReverse()
+        {
+            Random rd = new Random();
+            const string chars = "abcdefghijklmnopqrstuvwzyz";
+            int wordLength = rd.Next(1, 6);
+
+            string originalWord = "";
+            for (int i = 0; i < wordLength; i++)
+            {
+                originalWord += chars[rd.Next(0, 26)];
+            }
+
+            string reversedWord = "";
+            for (int i = wordLength - 1 ; i >= 0; i--)
+            {
+                reversedWord += originalWord[i];
+            }
+
+            Console.WriteLine($"Enter the reverse of this word: {originalWord}");
+            string userInput = Console.ReadLine();
+
+            if (userInput == reversedWord) Console.WriteLine("Spot on!");
+            else Console.WriteLine("You got it wrong");
+
         }
     }
 }
