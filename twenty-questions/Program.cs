@@ -21,4 +21,7 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.TemperatureUnitConversion();
 
 //6.
-oneToTen.MultiplicationTable(2, 12);
+//oneToTen.MultiplicationTable(2, 12);
+
+//7.
+oneToTen.ReadLineByLine("test.txt");

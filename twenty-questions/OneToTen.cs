@@ -286,6 +286,22 @@ namespace twenty_questions
                 Console.WriteLine("\n");
             }
         }
+
+        public void ReadLineByLine(string filePath)
+        {
+            Console.WriteLine($"Reading {filePath} line by line");
+            if (File.Exists(filePath))
+            {
+                using(StreamReader sr = new StreamReader(filePath))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        Console.WriteLine(sr.ReadLine());
+                    }
+                }
+            } else Console.WriteLine("The specified file does not exist");
+            
+        }
     }
 }
 
