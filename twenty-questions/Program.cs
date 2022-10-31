@@ -18,4 +18,7 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.TypeInReverse();
 
 //5.
-oneToTen.TemperatureUnitConversion();
+//oneToTen.TemperatureUnitConversion();
+
+//6.
+oneToTen.MultiplicationTable(2, 12);

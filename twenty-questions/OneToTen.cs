@@ -250,6 +250,42 @@ namespace twenty_questions
 
             Console.WriteLine("Thank you for using this Temperature Unit Converter");
         }
+
+        public void MultiplicationTable(int start, int end)
+        {
+            Console.WriteLine($"Generating Multiplication table for numbers {start} through {end}\n");
+
+            if (start < 1 || end > 12 || start >= end)
+            {
+                Console.WriteLine("Start value must be at least 1 and End value must be at most 12");
+                return;
+            }
+
+
+            int rowLength = end - start + 1;
+            int columnLength = end - start + 1;
+            List<List<int>> table = new List<List<int>>();
+            for (int i = 1; i <= end; i++)
+            {
+                table.Add(new List<int>());
+                for (int j = start; j <= end; j++)
+                {
+                    
+                    table[i - 1].Add(i * j);
+                }
+            }
+
+            for (int i = 0; i < end; i++)
+            {
+                for (int j = 0; j < rowLength; j++)
+                {
+                    int num = table[i][j];
+                    int space = num >= 100 ? 1 : num >= 10 ? 2 : 3; 
+                    Console.Write(num + string.Concat(Enumerable.Repeat(" ", space)));
+                }
+                Console.WriteLine("\n");
+            }
+        }
     }
 }
 
