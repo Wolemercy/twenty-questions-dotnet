@@ -302,6 +302,26 @@ namespace twenty_questions
             } else Console.WriteLine("The specified file does not exist");
             
         }
+
+        public void CombineTwoFiles(string filePath1, string filePath2)
+        {
+            Console.WriteLine($"Combining {filePath1} and {filePath2}");
+            if (File.Exists(filePath1) && File.Exists(filePath2))
+            {
+                using(StreamReader sr1 = new StreamReader(filePath1),
+                    sr2 = new StreamReader(filePath2))
+                {
+                    while(!sr1.EndOfStream || !sr2.EndOfStream)
+                    {
+                        string line1 = sr1.EndOfStream ? "" : sr1.ReadLine();
+                        string line2 = sr2.EndOfStream ? "" : sr2.ReadLine();
+
+                        Console.WriteLine(line1 + line2);
+                    }
+                }
+            }
+            else Console.WriteLine("One or more of the specified file(s) do not exist");
+        }
     }
 }
 

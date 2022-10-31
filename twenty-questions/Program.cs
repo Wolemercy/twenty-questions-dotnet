@@ -24,4 +24,7 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.MultiplicationTable(2, 12);
 
 //7.
-oneToTen.ReadLineByLine("test.txt");
+//oneToTen.ReadLineByLine("test1.txt");
+
+//7.
+oneToTen.CombineTwoFiles("test1.txt", "test2.txt");
