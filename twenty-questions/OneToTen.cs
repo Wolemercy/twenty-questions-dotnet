@@ -322,6 +322,21 @@ namespace twenty_questions
             }
             else Console.WriteLine("One or more of the specified file(s) do not exist");
         }
+
+        public void RGBColorGenerator()
+        {
+            Console.WriteLine("Generating random RGB color");
+
+            int[] rgbArray = new int[3];
+            Random rd = new Random();
+
+            for (int i = 0; i < 3; i++)
+            {
+                rgbArray[i] = rd.Next(0, 256);
+            }
+
+            Console.WriteLine($"Result: rgb({rgbArray[0]}, {rgbArray[1]}, {rgbArray[2]})");
+        }
     }
 }
 

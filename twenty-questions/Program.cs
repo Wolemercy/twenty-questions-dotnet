@@ -26,5 +26,8 @@ OneToTen oneToTen = new OneToTen();
 //7.
 //oneToTen.ReadLineByLine("test1.txt");
 
-//7.
-oneToTen.CombineTwoFiles("test1.txt", "test2.txt");
+//8.
+//oneToTen.CombineTwoFiles("test1.txt", "test2.txt");
+
+//9.
+oneToTen.RGBColorGenerator();
