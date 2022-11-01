@@ -33,4 +33,11 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.RGBColorGenerator();
 
 //10.
-oneToTen.HexColorGenerator();
+//oneToTen.HexColorGenerator();
+
+ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
+
+//11.
+string[] filePaths = new string[] { "a.txt", "b.pdf", "c.docx" };
+elevenToTwenty.ReadFileExtensions(filePaths);
+
