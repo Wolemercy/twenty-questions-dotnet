@@ -30,4 +30,7 @@ OneToTen oneToTen = new OneToTen();
 //oneToTen.CombineTwoFiles("test1.txt", "test2.txt");
 
 //9.
-oneToTen.RGBColorGenerator();
+//oneToTen.RGBColorGenerator();
+
+//10.
+oneToTen.HexColorGenerator();

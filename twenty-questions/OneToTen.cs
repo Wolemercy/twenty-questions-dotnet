@@ -337,6 +337,21 @@ namespace twenty_questions
 
             Console.WriteLine($"Result: rgb({rgbArray[0]}, {rgbArray[1]}, {rgbArray[2]})");
         }
+
+        public void HexColorGenerator()
+        {
+            Console.WriteLine("Generating a random Hex color");
+            string hexColor = "#";
+            Random rd = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                int decimalValue = rd.Next(0, 256);
+                string hexValue = decimalValue.ToString("X");
+                hexColor += decimalValue > 15 ? hexValue : "0" + hexValue;
+            }
+
+            Console.WriteLine($"Result: hex {hexColor}");
+        }
     }
 }
 
