@@ -42,5 +42,8 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.ReadFileExtensions(filePaths);
 
 //12.
-elevenToTwenty.SalaryClassifier();
+//elevenToTwenty.SalaryClassifier();
+
+//13.
+elevenToTwenty.TaxClassifier();
 

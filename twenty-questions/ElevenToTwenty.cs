@@ -45,6 +45,31 @@ namespace twenty_questions
             }
             return;
         }
+
+        public void TaxClassifier()
+        {
+            Console.WriteLine("Q12: Classifying your Tax");
+            Console.WriteLine("Please input how much you earn");
+
+            int salary = Convert.ToInt32(Console.ReadLine());
+
+            switch (salary)
+            {
+                case <= 0:
+                    Console.WriteLine("Only positive numbers are allowed");
+                    break;
+                case < 50000:
+                    Console.WriteLine($"Tax is 5%: {Math.Round(0.05 * salary, 2)}");
+                    break;
+                case < 200000:
+                    Console.WriteLine($"Tax is 10%: {Math.Round(0.1 * salary)}");
+                    break;
+                default:
+                    Console.WriteLine($"Tax is 15%: {Math.Round(0.15 * salary)}");
+                    break;
+            }
+            return;
+        }
     }
 }
 
