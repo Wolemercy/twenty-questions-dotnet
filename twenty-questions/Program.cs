@@ -38,6 +38,9 @@ OneToTen oneToTen = new OneToTen();
 ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 
 //11.
-string[] filePaths = new string[] { "a.txt", "b.pdf", "c.docx" };
-elevenToTwenty.ReadFileExtensions(filePaths);
+//string[] filePaths = new string[] { "a.txt", "b.pdf", "c.docx" };
+//elevenToTwenty.ReadFileExtensions(filePaths);
+
+//12.
+elevenToTwenty.SalaryClassifier();
 
