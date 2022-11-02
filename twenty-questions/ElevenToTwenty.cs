@@ -172,7 +172,6 @@ namespace twenty_questions
                     if (combined.Length > 0)
                     {
                         prefix += appendAnd ? " and " : ", ";
-
                     }
 
                     appendAnd = false;
@@ -181,6 +180,53 @@ namespace twenty_questions
                 }
             }
             Console.WriteLine($"{combined}");
+            return;
+        }
+
+        public void SimpleInterestCalculator()
+        {
+            Console.WriteLine("Q15: Simple Interest Calculator");
+            double principal;
+            double rate;
+            int time;
+
+            try
+            {
+                Console.WriteLine("Please input the principal:");
+                principal = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Please input the rate (%): ");
+                rate = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Please input the time");
+                time = Convert.ToInt32(Console.ReadLine());
+
+                if ( principal < 0 || rate < 0 || time < 0)
+                {
+                    throw new FormatException();
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Could not convert input into a positive value");
+                return;
+            }
+
+            Console.WriteLine($"Principal: {principal}");
+            Console.WriteLine($"Rate (%): {rate}");
+            Console.WriteLine($"Time: {time}");
+
+            for (int i = 1; i <= time; i++)
+            {
+                Console.WriteLine($"Year {i}");
+
+                double interest = principal * rate * i * 0.01;
+                principal += interest;
+                Console.WriteLine("Interest: {0:C}", interest);
+                Console.WriteLine("New Principal: {0:C}\n", principal);
+            }
+
+            Console.WriteLine("Final amount: {0:C}\n", principal);
             return;
         }
     }

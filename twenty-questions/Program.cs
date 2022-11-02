@@ -48,5 +48,8 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.TaxClassifier();
 
 //14
-elevenToTwenty.NumberInWords();
+//elevenToTwenty.NumberInWords();
+
+//15.
+elevenToTwenty.SimpleInterestCalculator();
 
