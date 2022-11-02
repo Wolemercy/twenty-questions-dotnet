@@ -406,6 +406,66 @@ namespace twenty_questions
             else Console.WriteLine("The specified file does not exist");
             return;
         }
+
+        public void LoveCalculator()
+        {
+
+            string _calculate(string numString)
+            {
+                if (numString.Length == 2) return numString;
+
+                string nextNumString = "";
+
+                int left = 0;
+                int right = numString.Length - 1;
+
+                
+                while (left < right)
+                {
+                    int leftNum = numString[left] - '0';
+                    int rightNum = numString[right] - '0';
+                    nextNumString += leftNum + rightNum;
+                    //Console.WriteLine(nextNumString + " " + numString + "  " + left + " " + right + " " + leftNum + " " + rightNum);
+
+                    left++;
+                    right--;
+                }
+
+                if (left == right) nextNumString += numString[left];
+                return _calculate(nextNumString);
+            }
+            Console.WriteLine("Q20: Calculating Love, I guess");
+
+            Console.WriteLine("Input the name of the first person: ");
+            string person1 = Console.ReadLine().ToLower();
+
+            Console.WriteLine("Input the name of the second person: ");
+            string person2 = Console.ReadLine().ToLower();
+
+            string combinedResult = person1 + "loves" + person2;
+
+            IDictionary<string, int> charFrequency = new Dictionary<string, int>();
+
+            string numString = "";
+
+            foreach (char c in combinedResult)
+            {
+                if (charFrequency.ContainsKey(c.ToString()))
+                {
+                    charFrequency[c.ToString()] += 1;
+                } else charFrequency[c.ToString()] = 1;
+            }
+
+            foreach (char c in combinedResult)
+            {
+                numString += charFrequency[c.ToString()];
+            }
+
+            Console.WriteLine(numString);
+            string lovePercent = _calculate(numString);
+            Console.WriteLine($"The love percentage is {lovePercent}%");
+
+        }
     }
 }
 

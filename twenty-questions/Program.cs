@@ -63,5 +63,7 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.CalculateCGPA("scores.csv");
 
 //19
-elevenToTwenty.AttendanceRegister("students.txt");
+//elevenToTwenty.AttendanceRegister("students.txt");
 
+//20.
+elevenToTwenty.LoveCalculator();
