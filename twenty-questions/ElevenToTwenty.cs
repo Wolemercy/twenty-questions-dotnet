@@ -48,7 +48,7 @@ namespace twenty_questions
 
         public void TaxClassifier()
         {
-            Console.WriteLine("Q12: Classifying your Tax");
+            Console.WriteLine("Q13`: Classifying your Tax");
             Console.WriteLine("Please input how much you earn");
 
             int salary = Convert.ToInt32(Console.ReadLine());
@@ -68,6 +68,119 @@ namespace twenty_questions
                     Console.WriteLine($"Tax is 15%: {Math.Round(0.15 * salary)}");
                     break;
             }
+            return;
+        }
+
+        public void NumberInWords()
+        {
+            // Based off: http://www.blackwasp.co.uk/NumberToWords.aspx
+            Console.WriteLine("Q14: Number in Words");
+            Console.WriteLine("Please enter the number you need transformed into words");
+
+            int number;
+            try
+            {
+                string userInput = Console.ReadLine();
+                number = Convert.ToInt32(userInput);
+                if (number < 0) throw new FormatException();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Could not convert the input to a positive 32-bit integer");
+                return;
+            }
+
+            string[] smallNumbers = new string[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+
+            string[] tensNumbers = new string[] { "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+
+            string[] scaleNumbers = new string[] { "", "Thousand", "Million", "Billion" };
+
+            if (number == 0)
+            {
+                string res = smallNumbers[0];
+                Console.WriteLine(res);
+                return;
+            }
+
+            int[] digitGroups = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                digitGroups[i] = number % 1000;
+                number /= 1000;
+            }
+
+            // Converts a three-digit group into English words
+            string _ThreeDigitGroupToWords(int threeDigits)
+            {
+                string groupText = "";
+
+                // Determine the hundreds and tensUnits
+                int hundreds = threeDigits / 100;
+                int tensUnits = threeDigits % 100;
+
+                // rule for hundreds
+                if (hundreds > 0)
+                {
+                    groupText += smallNumbers[hundreds] + " Hundred";
+
+                    if (tensUnits > 0)
+                    {
+                        groupText += " and ";
+                    }
+                }
+
+                // Determine the tens and units
+                int tens = tensUnits / 10;
+                int units = tensUnits % 10;
+
+                // tens and units rules
+                if (tens >= 2)
+                {
+                    groupText += tensNumbers[tens];
+
+                    if (units > 0)
+                    {
+                        groupText += " " + smallNumbers[units];
+                    }
+                } else if (tensUnits > 0)
+                {
+                    groupText += smallNumbers[tensUnits];
+                }
+
+                return groupText;
+            }
+
+            string[] groupTexts = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                groupTexts[i] = _ThreeDigitGroupToWords(digitGroups[i]);
+            }
+
+            // combining the digitgroups;
+            string combined = groupTexts[0];
+            bool appendAnd;
+
+            appendAnd = digitGroups[0] > 0 && digitGroups[0] < 100;
+
+            for (int i = 1; i < 4; i++)
+            {
+                if (digitGroups[i] > 0)
+                {
+                    string prefix = groupTexts[i] + " " + scaleNumbers[i];
+
+                    if (combined.Length > 0)
+                    {
+                        prefix += appendAnd ? " and " : ", ";
+
+                    }
+
+                    appendAnd = false;
+
+                    combined = prefix + combined;
+                }
+            }
+            Console.WriteLine($"{combined}");
             return;
         }
     }
