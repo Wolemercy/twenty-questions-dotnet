@@ -279,7 +279,7 @@ namespace twenty_questions
 
         public void ConvertDecimalToBaseN()
         {
-            Console.WriteLine("Q16: Convert To Decimal");
+            Console.WriteLine("Q17: Convert Decimal to Base N");
 
             int baseN;
             int number;
@@ -322,6 +322,44 @@ namespace twenty_questions
 
             if (number < 0) result = -result;
             Console.WriteLine($"Result: {result}");
+        }
+
+        public void CalculateCGPA(string records)
+        {
+            double[] _calculate(string[] scores) {
+                double cgpa = 0;
+                double averageScore = 0;
+
+                for (int i = 0; i < scores.Length; i++)
+                {
+                    int score = Convert.ToInt32(scores[i]);
+                    cgpa = ((cgpa * i) + (score / 20)) / (i + 1);
+                    averageScore = ((averageScore * i) + score) / (i + 1);
+                }
+
+                return new double[] { Math.Round(cgpa, 2), Math.Round(averageScore, 2) };
+            }
+
+            Console.WriteLine("Q18: Calculating CGPAs");
+
+            if (File.Exists(records))
+            {
+                using(StreamReader sr = new StreamReader(records))
+                using (StreamWriter sw = new StreamWriter("cgpa.txt"))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] splitRecord = sr.ReadLine().Split(',');
+                        if (splitRecord[0] == "id") continue;
+
+                        double[] result = _calculate(splitRecord.Skip(2).Take(5).ToArray());
+                        string output = $"{splitRecord[1]} ({splitRecord[0]}): {result[1]} {result[0]}";
+                        sw.WriteLine(output);
+                        Console.WriteLine(output);
+                    }
+                }
+            }
+            else Console.WriteLine("The specified file does not exist");
         }
     }
 }

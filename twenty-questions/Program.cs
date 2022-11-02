@@ -57,5 +57,8 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.ConvertToDecimal();
 
 //17
-elevenToTwenty.ConvertDecimalToBaseN();
+//elevenToTwenty.ConvertDecimalToBaseN();
+
+//18
+elevenToTwenty.CalculateCGPA("scores.csv");
 
