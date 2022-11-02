@@ -51,5 +51,8 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.NumberInWords();
 
 //15.
-elevenToTwenty.SimpleInterestCalculator();
+//elevenToTwenty.SimpleInterestCalculator();
+
+//16.
+elevenToTwenty.ConvertToDecimal();
 
