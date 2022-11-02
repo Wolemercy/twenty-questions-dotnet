@@ -273,6 +273,54 @@ namespace twenty_questions
                 return;
             }
 
+            if (number < 0) result = -result;
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public void ConvertDecimalToBaseN()
+        {
+            Console.WriteLine("Q16: Convert To Decimal");
+
+            int baseN;
+            int number;
+            try
+            {
+                Console.WriteLine("Input the base you want to convert to: ");
+                baseN = Convert.ToInt32(Console.ReadLine());
+                if (baseN < 2) throw new FormatException();
+
+                Console.WriteLine("Input the number value you want to convert: ");
+                number = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Accepted bases range from 2 to {Int32.MaxValue}");
+                return;
+            }
+
+            int absNumber = Math.Abs(number);
+            double result = 0;
+
+            try
+            {
+                int placeValue = 0;
+
+                while (absNumber > 0)
+                {
+                    int quotient = absNumber / baseN, remainder = absNumber % baseN;
+                    result += remainder * Math.Pow(10, placeValue);
+
+                    placeValue++;
+                    absNumber = quotient;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Could not convert {number} from base 10 to base {baseN}");
+                return;
+            }
+
+            if (number < 0) result = -result;
             Console.WriteLine($"Result: {result}");
         }
     }

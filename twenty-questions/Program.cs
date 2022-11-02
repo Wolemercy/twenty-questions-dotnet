@@ -54,5 +54,8 @@ ElevenToTwenty elevenToTwenty = new ElevenToTwenty();
 //elevenToTwenty.SimpleInterestCalculator();
 
 //16.
-elevenToTwenty.ConvertToDecimal();
+//elevenToTwenty.ConvertToDecimal();
+
+//17
+elevenToTwenty.ConvertDecimalToBaseN();
 
