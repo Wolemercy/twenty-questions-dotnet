@@ -361,6 +361,51 @@ namespace twenty_questions
             }
             else Console.WriteLine("The specified file does not exist");
         }
+
+        public void AttendanceRegister(string students)
+        {
+            Console.WriteLine("Q19: Checking Attendance");
+
+            if (File.Exists(students))
+            {
+                using (StreamReader sr = new StreamReader(students))
+                using (StreamWriter sw = new StreamWriter("studentsregister.txt"))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string student = sr.ReadLine();
+                        Console.WriteLine($"Is {student} in class? [yes/no]");
+
+                        bool awaitingInput = true;
+                        string inClass ="";
+
+                        while (awaitingInput)
+                        {
+                            try
+                            {
+                                string userInput = Console.ReadLine().ToLower();
+                                if (userInput == "yes") inClass =   "✅";
+                                else if (userInput == "no") inClass = "❌";
+                                else throw new FormatException();
+
+                                awaitingInput = false;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Please enter either 'yes' or 'no'");
+                            }
+                        }
+
+                        string result = $"{student}:\t\t{inClass}";
+                        sw.WriteLine(result);
+                        Console.WriteLine(result);
+                        
+                    }
+                }
+            }
+            else Console.WriteLine("The specified file does not exist");
+            return;
+        }
     }
 }
 
