@@ -425,7 +425,6 @@ namespace twenty_questions
                     int leftNum = numString[left] - '0';
                     int rightNum = numString[right] - '0';
                     nextNumString += leftNum + rightNum;
-                    //Console.WriteLine(nextNumString + " " + numString + "  " + left + " " + right + " " + leftNum + " " + rightNum);
 
                     left++;
                     right--;
@@ -461,7 +460,6 @@ namespace twenty_questions
                 numString += charFrequency[c.ToString()];
             }
 
-            Console.WriteLine(numString);
             string lovePercent = _calculate(numString);
             Console.WriteLine($"The love percentage is {lovePercent}%");
 
